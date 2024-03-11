@@ -8,4 +8,6 @@ public interface AdminService {
 
 	public EmployeeDetails saveEmployee(String employeeDetails, MultipartFile profileImg);
 
+	public EmployeeDetails getAdminSingleData(int employeeId);
+
 }

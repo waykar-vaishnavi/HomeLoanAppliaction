@@ -3,6 +3,8 @@ package com.loan.ad.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,4 +25,12 @@ public class AdminController
 		   EmployeeDetails emp = adminservice.saveEmployee( employeeDetails,profileImg);
 		   return new ResponseEntity<String>("Employee Data Added Successfully",HttpStatus.CREATED); 
 	   }
+	   
+	   //get Single Admin Record By using employeeID
+	   @GetMapping("/getEmployees_FindById/{employeeId}")
+	   public ResponseEntity<EmployeeDetails> getAdminSingleData(@PathVariable int employeeId ){
+		   EmployeeDetails response =adminservice.getAdminSingleData(employeeId);
+		   return new ResponseEntity<EmployeeDetails>(response,HttpStatus.OK);
+	   }
+	   
 }
