@@ -33,4 +33,11 @@ public class AdminServiceImpl implements AdminService
 	
 	return null;
 	}
+
+
+	@Override
+	public EmployeeDetails saveEmployee(EmployeeDetails ed) {
+		EmployeeDetails emd = adminrepository.save(ed);
+		return emd;
+	}
 }
