@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,5 +34,11 @@ public class EnquiryController {
 		
 		List<CustomerEnquiryDetails> ced=enquiryservice.getEnquiryDetailsss();
 				return new ResponseEntity<List<CustomerEnquiryDetails>>(ced,HttpStatus.ACCEPTED) ;
+	}
+	
+	@GetMapping("/getEnquiryById/{customerEnquiryId}")
+	public ResponseEntity<CustomerEnquiryDetails> getEnquiryById(@PathVariable int customerEnquiryId){
+		CustomerEnquiryDetails response = enquiryservice.getEnquiryById(customerEnquiryId);
+		return new ResponseEntity<CustomerEnquiryDetails>(response,HttpStatus.FOUND);
 	}
 }

@@ -10,4 +10,6 @@ public interface EnquiryService {
 
 	public List<CustomerEnquiryDetails> getEnquiryDetailsss();
 
+	public CustomerEnquiryDetails getEnquiryById(int customerEnquiryId);
+
 }
