@@ -33,8 +33,8 @@ public class LoanAppController
 		   return new ResponseEntity<String>("Customer Details Added Successfully",HttpStatus.CREATED);
 	   }
 	
-	 @GetMapping("/get_Employee")
-	   public ResponseEntity<List<CustomerDetails>> getEmployee()
+	 @GetMapping("/get_Customer")
+	   public ResponseEntity<List<CustomerDetails>> getCusomer()
 	   {
 		   List<CustomerDetails> emp = loanappservice.getCustomerData();
 		   return new ResponseEntity<List<CustomerDetails>>(emp,HttpStatus.OK);
