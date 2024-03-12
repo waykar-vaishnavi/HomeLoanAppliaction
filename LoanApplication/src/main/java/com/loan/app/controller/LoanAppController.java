@@ -1,8 +1,11 @@
 package com.loan.app.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,5 +31,12 @@ public class LoanAppController
 	   {
 		   CustomerDetails ccd = loanappservice.saveCustomer(customerDetails,pancard,incomeCertificate,adharcard,pphoto,ssign,bankpassbook);
 		   return new ResponseEntity<String>("Customer Details Added Successfully",HttpStatus.CREATED);
+	   }
+	
+	 @GetMapping("/get_Employee")
+	   public ResponseEntity<List<CustomerDetails>> getEmployee()
+	   {
+		   List<CustomerDetails> emp = loanappservice.getCustomerData();
+		   return new ResponseEntity<List<CustomerDetails>>(emp,HttpStatus.OK);
 	   }
 }
