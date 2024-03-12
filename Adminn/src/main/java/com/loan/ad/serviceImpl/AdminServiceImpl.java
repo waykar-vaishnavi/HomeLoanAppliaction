@@ -1,5 +1,7 @@
 package com.loan.ad.serviceImpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -36,8 +38,15 @@ public class AdminServiceImpl implements AdminService
 
 
 	@Override
-	public EmployeeDetails saveEmployee(EmployeeDetails ed) {
+	public EmployeeDetails updateEmployee(EmployeeDetails ed) {
 		EmployeeDetails emd = adminrepository.save(ed);
 		return emd;
+	}
+
+
+	@Override
+	public List<EmployeeDetails> getEmployeeData() {
+		List<EmployeeDetails> ell = adminrepository.findAll();
+		return ell;
 	}
 }

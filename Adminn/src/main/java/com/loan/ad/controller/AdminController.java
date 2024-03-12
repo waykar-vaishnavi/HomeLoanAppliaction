@@ -1,8 +1,12 @@
 package com.loan.ad.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -15,6 +19,7 @@ import com.loan.ad.model.EmployeeDetails;
 import com.loan.ad.service.AdminService;
 
 @RestController
+@CrossOrigin("*")
 public class AdminController 
 {
 	 @Autowired private AdminService adminservice;
@@ -27,10 +32,17 @@ public class AdminController
 		   return new ResponseEntity<String>("Employee Data Added Successfully",HttpStatus.CREATED); 
 	   }
 	   
+	   @GetMapping("/get_employee")
+	   public ResponseEntity<List<EmployeeDetails>> getAllEmployeeDetails()
+	   {
+		   List<EmployeeDetails> el = adminservice.getEmployeeData();
+		   return new ResponseEntity<List<EmployeeDetails>>(el,HttpStatus.ACCEPTED);
+	   }
+	   
 	   @PutMapping("/edit_employeedetails/{employeeId}")
 		public EmployeeDetails editEmployeeData(@PathVariable("employeeId") int id, @RequestBody EmployeeDetails ed)
 		{
-			EmployeeDetails empd = adminservice.saveEmployee(ed);
+			EmployeeDetails empd = adminservice.updateEmployee(ed);
 			
 			return empd;
 		}
