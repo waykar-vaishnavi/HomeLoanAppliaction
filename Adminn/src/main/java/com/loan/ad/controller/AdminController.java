@@ -32,7 +32,7 @@ public class AdminController
 		   return new ResponseEntity<String>("Employee Data Added Successfully",HttpStatus.CREATED); 
 	   }
 	   
-	   @GetMapping("/get_employee")
+	   @GetMapping("/get_employee_details")
 	   public ResponseEntity<List<EmployeeDetails>> getAllEmployeeDetails()
 	   {
 		   List<EmployeeDetails> el = adminservice.getEmployeeData();
