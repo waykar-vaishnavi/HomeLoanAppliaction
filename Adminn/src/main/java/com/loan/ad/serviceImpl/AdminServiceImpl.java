@@ -1,7 +1,5 @@
 package com.loan.ad.serviceImpl;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -35,11 +33,12 @@ public class AdminServiceImpl implements AdminService
 	
 	return null;
 	}
+	
+	public EmployeeDetails saveEmployee(EmployeeDetails ed) {
+		EmployeeDetails emd = adminrepository.save(ed);
+		return emd;
 
-
-	@Override
-	public EmployeeDetails getAdminSingleData(int employeeId) {
-		Optional<EmployeeDetails> getrecord=adminrepository.findById(employeeId);
-		return getrecord.get();
 	}
+	
+	
 }
