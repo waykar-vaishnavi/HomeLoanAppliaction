@@ -1,5 +1,7 @@
 package com.loan.serviceImpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,12 @@ public class EnquiryServiceImpl implements EnquiryService{
 	public CustomerEnquiryDetails saveEnquiryDetails(CustomerEnquiryDetails ced) {
 		CustomerEnquiryDetails ce = enquiryrepo.save(ced);
 		return ce;
+	}
+
+	@Override
+	public List<CustomerEnquiryDetails> getEnquiryDetailsss() {
+		List<CustomerEnquiryDetails> li =enquiryrepo.findAll();
+		return li;
 	}
 
 }
