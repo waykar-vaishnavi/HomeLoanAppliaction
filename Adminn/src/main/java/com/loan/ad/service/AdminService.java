@@ -14,4 +14,6 @@ public interface AdminService {
 
 	public List<EmployeeDetails> getEmployeeData();
 
+	public EmployeeDetails deleteemp(int n);
+
 }
