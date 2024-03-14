@@ -10,11 +10,13 @@ public interface LoanAppService {
 
 	public CustomerDetails saveCustomer(String customerDetails, MultipartFile pancard, MultipartFile incomeCertificate,
 			                            MultipartFile adharcard, MultipartFile pphoto, MultipartFile ssign, MultipartFile bankpassbook);
-
+	
 	public List<CustomerDetails> getCustomerData();
 
 	public void deleteCustomerById(int csid);
 
 	public CustomerDetails updateCustomerById(CustomerDetails cd);
+
+	public int checkcibil();
 
 }

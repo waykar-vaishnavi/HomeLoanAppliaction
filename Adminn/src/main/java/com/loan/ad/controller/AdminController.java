@@ -48,7 +48,6 @@ public class AdminController
 			
 			return new ResponseEntity<EmployeeDetails>(empd,HttpStatus.OK);
 		}
-	   
 
 	 //get Single Admin Record By using employeeID
 	   @GetMapping("/getEmployeeByName/{employeeName}")
@@ -62,6 +61,6 @@ public class AdminController
 		public  ResponseEntity<String>  deleteEmployee(@PathVariable("employeeId") int n) {
 			   adminservice.deleteEmployeeById(n);
 			return new ResponseEntity<String>("Delete Employee Sucessfully..!!",HttpStatus.OK);
-		}
+		} 
 
 }

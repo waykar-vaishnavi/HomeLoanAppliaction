@@ -42,4 +42,8 @@ public class EnquiryController {
 		CustomerEnquiryDetails response = enquiryservice.getEnquiryByName(customerFirstName);
 		return new ResponseEntity<CustomerEnquiryDetails>(response,HttpStatus.FOUND);
 	}
+	     
+	
+	
+	
 }
