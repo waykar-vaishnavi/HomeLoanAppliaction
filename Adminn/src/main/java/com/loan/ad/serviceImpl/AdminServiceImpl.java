@@ -63,8 +63,11 @@ public class AdminServiceImpl implements AdminService
 
 
 	@Override
-	public EmployeeDetails deleteemp(int n) {
-	     adminrepository.deleteById(n);
-		return null;
+	public void deleteemp(int n) {
+		adminrepository.deleteById(n);
+		
 	}
+
+
+	
 }

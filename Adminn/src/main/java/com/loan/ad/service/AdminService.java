@@ -16,6 +16,6 @@ public interface AdminService {
 
 	public EmployeeDetails getEmployeeById(int employeeId);
 
-	public EmployeeDetails deleteemp(int n);
+	public void deleteemp(int n);
 
 }
