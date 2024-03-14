@@ -19,4 +19,8 @@ public interface LoanAppService {
 
 	public int checkcibil();
 
+	public CustomerDetails getByIdCustomer(int cid);
+
+	
+
 }

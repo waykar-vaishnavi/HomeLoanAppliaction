@@ -60,10 +60,19 @@ public class LoanAppServiceImpl implements LoanAppService
 		return emd;
 	}
 
+	@Override
 	public int checkcibil() {
 		int  min=550,max=950;
 		int cibil=ThreadLocalRandom.current().nextInt(min,max+1);
 		return cibil;
 	}
+
+	@Override
+	public CustomerDetails getByIdCustomer(int cid) {
+		CustomerDetails ccd = loanapprepository.findAllById(cid);
+		return ccd;
+	}
+
+	
 
 }

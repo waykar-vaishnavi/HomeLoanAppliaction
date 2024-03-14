@@ -53,6 +53,13 @@ public class LoanAppController
 			return new ResponseEntity<CustomerDetails>(cmpd,HttpStatus.OK);
 	 }
 	 
+	 @GetMapping("/getsingleCutomer/{customerApplicationId}") //get single customer by id
+	 public ResponseEntity<CustomerDetails> getSingleCustomer(@PathVariable("customerApplicationId") int cid) 
+	 {
+		 CustomerDetails ccd = loanappservice.getByIdCustomer(cid);
+		 return new ResponseEntity<CustomerDetails>(ccd, HttpStatus.OK);
+	 }
+	 
 	 @DeleteMapping("/delete_customer/{customerApplicationId}")
 	 public ResponseEntity<String> deleteCustomer(@PathVariable("customerApplicationId") int csid)
 	 {

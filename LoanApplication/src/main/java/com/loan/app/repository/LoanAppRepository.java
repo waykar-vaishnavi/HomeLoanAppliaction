@@ -10,5 +10,7 @@ import com.loan.app.model.CustomerDetails;
 @Repository
 public interface LoanAppRepository extends JpaRepository<CustomerDetails, Integer>{
 
+	public CustomerDetails findAllById(int cid);
+
 
 }
