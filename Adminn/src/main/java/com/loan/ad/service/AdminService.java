@@ -16,6 +16,8 @@ public interface AdminService {
 
 	public EmployeeDetails getEmployeeByName(String employeeName);
 
-	public void deleteemp(int n);
+	public void deleteEmployee(String n);
+
+	
 
 }

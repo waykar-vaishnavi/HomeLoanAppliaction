@@ -10,5 +10,6 @@ public interface AdminRepository extends JpaRepository<EmployeeDetails, Integer>
 
 	public EmployeeDetails findByEmployeeName(String employeeName);
 
+	public void deleteByEmployeeName(String n);
 	
 }

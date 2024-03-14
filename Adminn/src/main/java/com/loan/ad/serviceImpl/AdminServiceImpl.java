@@ -63,15 +63,13 @@ public class AdminServiceImpl implements AdminService
 		{
 			return null;
 		}
-}
+    }
 
 
 	@Override
-	public void deleteemp(int n) {
-		adminrepository.deleteById(n);
+	public void deleteEmployee(String n) {
+		adminrepository.deleteByEmployeeName(n);
 		
 	}
 
-
-	
 }
