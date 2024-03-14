@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,9 +29,10 @@ public class AdminController
 	   public ResponseEntity<String> addEmployees(@RequestPart ("employees") String employeeDetails,
 			                                      @RequestPart ("profile") MultipartFile profileImg)
 	   {
-		   EmployeeDetails emp = adminservice.saveEmployee( employeeDetails,profileImg);
+		   EmployeeDetails emp = adminservice.saveEmployee(employeeDetails,profileImg);
 		   return new ResponseEntity<String>("Employee Data Added Successfully",HttpStatus.CREATED); 
 	   }
+	   
 	   
 	   @GetMapping("/get_employee_details")
 	   public ResponseEntity<List<EmployeeDetails>> getAllEmployeeDetails()
@@ -47,11 +49,19 @@ public class AdminController
 			return empd;
 		}
 	   
+
 	 //get Single Admin Record By using employeeID
 	   @GetMapping("/getEmployeeById/{employeeId}")
 	   public ResponseEntity<EmployeeDetails> getEmployeeById(@PathVariable int employeeId ){
 		   EmployeeDetails response =adminservice.getEmployeeById(employeeId);
 		   return new ResponseEntity<EmployeeDetails>(response,HttpStatus.OK);
 	   }
+
+
+	   @DeleteMapping("/deleteemp/{employeeId}")
+		public  ResponseEntity<String>  delete(@PathVariable("employeeId") int n) {
+			EmployeeDetails emp = adminservice.deleteemp(n);
+			return new ResponseEntity<String>("Delete Employee Sucessfully..!!",HttpStatus.OK);
+		}
 
 }

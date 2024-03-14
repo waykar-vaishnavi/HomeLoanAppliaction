@@ -60,4 +60,11 @@ public class AdminServiceImpl implements AdminService
 	else
 		return null;
 }
+
+
+	@Override
+	public EmployeeDetails deleteemp(int n) {
+	     adminrepository.deleteById(n);
+		return null;
+	}
 }
