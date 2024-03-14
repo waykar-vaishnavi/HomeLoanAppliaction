@@ -52,13 +52,17 @@ public class AdminServiceImpl implements AdminService
 	}
 	
 	@Override
-    public EmployeeDetails getEmployeeById(int employeeId) {
-	if(adminrepository.existsById(employeeId)) {
-		Optional<EmployeeDetails> getrecord=adminrepository.findById(employeeId);
-		return getrecord.get();
-	}
-	else
-		return null;
+    public EmployeeDetails getEmployeeByName(String employeeName) {
+		EmployeeDetails getrecord=adminrepository.findByEmployeeName(employeeName);
+		
+		if(getrecord!=null)
+		{
+			return getrecord;
+		}
+		else
+		{
+			return null;
+		}
 }
 
 

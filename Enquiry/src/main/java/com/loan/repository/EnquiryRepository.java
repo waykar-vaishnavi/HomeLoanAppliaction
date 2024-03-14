@@ -8,4 +8,6 @@ import com.loan.model.CustomerEnquiryDetails;
 @Repository
 public interface EnquiryRepository extends JpaRepository<CustomerEnquiryDetails, Integer>{
 
+	public CustomerEnquiryDetails findByCustomerFirstName(String customerFirstName);
+
 }

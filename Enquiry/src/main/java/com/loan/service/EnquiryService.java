@@ -10,6 +10,6 @@ public interface EnquiryService {
 
 	public List<CustomerEnquiryDetails> getEnquiryDetailsss();
 
-	public CustomerEnquiryDetails getEnquiryById(int customerEnquiryId);
+	public CustomerEnquiryDetails getEnquiryByName(String customerFirstName);
 
 }

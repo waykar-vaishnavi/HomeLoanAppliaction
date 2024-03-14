@@ -51,9 +51,9 @@ public class AdminController
 	   
 
 	 //get Single Admin Record By using employeeID
-	   @GetMapping("/getEmployeeById/{employeeId}")
-	   public ResponseEntity<EmployeeDetails> getEmployeeById(@PathVariable int employeeId ){
-		   EmployeeDetails response =adminservice.getEmployeeById(employeeId);
+	   @GetMapping("/getEmployeeByName/{employeeName}")
+	   public ResponseEntity<EmployeeDetails> getEmployeeByName(@PathVariable String employeeName ){
+		   EmployeeDetails response =adminservice.getEmployeeByName(employeeName);
 		   return new ResponseEntity<EmployeeDetails>(response,HttpStatus.OK);
 	   }
 
