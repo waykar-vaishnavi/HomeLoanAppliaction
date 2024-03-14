@@ -58,9 +58,9 @@ public class AdminController
 	   }
 
 
-	   @DeleteMapping("/deleteemp/{employeeName}")
-		public  ResponseEntity<String>  delete(@PathVariable("employeeName") String n) {
-			   adminservice.deleteEmployee(n);
+	   @DeleteMapping("/deleteemp/{employeeId}")
+		public  ResponseEntity<String>  deleteEmployee(@PathVariable("employeeId") int n) {
+			   adminservice.deleteEmployeeById(n);
 			return new ResponseEntity<String>("Delete Employee Sucessfully..!!",HttpStatus.OK);
 		}
 
