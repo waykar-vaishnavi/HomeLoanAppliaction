@@ -47,4 +47,16 @@ public class LoanAppServiceImpl implements LoanAppService
 		return cd;
 	}
 
+	@Override
+	public void deleteCustomerById(int csid) {
+		loanapprepository.deleteById(csid);
+		
+	}
+
+	@Override
+	public CustomerDetails updateCustomerById(CustomerDetails cd) {
+		CustomerDetails emd = loanapprepository.save(cd);
+		return emd;
+	}
+
 }

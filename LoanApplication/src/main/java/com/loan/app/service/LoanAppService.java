@@ -13,4 +13,8 @@ public interface LoanAppService {
 
 	public List<CustomerDetails> getCustomerData();
 
+	public void deleteCustomerById(int csid);
+
+	public CustomerDetails updateCustomerById(CustomerDetails cd);
+
 }

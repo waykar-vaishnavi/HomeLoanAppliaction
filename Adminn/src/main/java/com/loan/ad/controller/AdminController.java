@@ -42,11 +42,11 @@ public class AdminController
 	   }
 	   
 	   @PutMapping("/edit_employeedetails/{employeeId}")
-		public EmployeeDetails editEmployeeData(@PathVariable("employeeId") int id, @RequestBody EmployeeDetails ed)
+		public ResponseEntity<EmployeeDetails> editEmployeeData(@PathVariable("employeeId") int id, @RequestBody EmployeeDetails ed)
 		{
 			EmployeeDetails empd = adminservice.updateEmployee(ed);
 			
-			return empd;
+			return new ResponseEntity<EmployeeDetails>(empd,HttpStatus.OK);
 		}
 	   
 
