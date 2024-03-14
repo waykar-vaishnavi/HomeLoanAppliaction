@@ -39,4 +39,12 @@ public class LoanAppController
 		   List<CustomerDetails> emp = loanappservice.getCustomerData();
 		   return new ResponseEntity<List<CustomerDetails>>(emp,HttpStatus.OK);
 	   }
+	 @GetMapping("/getcibilscore")
+	   public ResponseEntity<Integer> cibilcheck()
+	   {
+		int checkcibilcheck=loanappservice.checkcibil();
+		return new ResponseEntity<Integer>(checkcibilcheck,HttpStatus.OK);
+	   }
+	 
+	 
 }

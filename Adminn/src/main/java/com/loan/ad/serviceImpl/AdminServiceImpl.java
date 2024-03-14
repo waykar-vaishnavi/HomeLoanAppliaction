@@ -1,7 +1,6 @@
 package com.loan.ad.serviceImpl;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,14 +49,10 @@ public class AdminServiceImpl implements AdminService
 		List<EmployeeDetails> ell = adminrepository.findAll();
 		return ell;
 	}
-	
-	@Override
-    public EmployeeDetails getEmployeeById(int employeeId) {
-	if(adminrepository.existsById(employeeId)) {
-		Optional<EmployeeDetails> getrecord=adminrepository.findById(employeeId);
-		return getrecord.get();
-	}
-	else
-		return null;
-}
+
+
+//	@Override
+//	public EmployeeDetails deleteemp(int n) {
+//			return adminrepository.deleteById(n);
+//	}
 }

@@ -41,4 +41,8 @@ public class EnquiryController {
 		CustomerEnquiryDetails response = enquiryservice.getEnquiryById(customerEnquiryId);
 		return new ResponseEntity<CustomerEnquiryDetails>(response,HttpStatus.FOUND);
 	}
+	     
+	
+	
+	
 }
