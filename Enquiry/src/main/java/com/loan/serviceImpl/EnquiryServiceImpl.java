@@ -30,13 +30,15 @@ public class EnquiryServiceImpl implements EnquiryService{
 	}
 
 	@Override
-	public CustomerEnquiryDetails getEnquiryById(int customerEnquiryId) {
-		if(enquiryrepo.existsById(customerEnquiryId)) {
-			Optional<CustomerEnquiryDetails> data = enquiryrepo.findById(customerEnquiryId);
-			return data.get();
+	public CustomerEnquiryDetails getEnquiryByName(String customerFirstName) {
+		CustomerEnquiryDetails response=enquiryrepo.findByCustomerFirstName(customerFirstName);
+		
+		if(response!=null) {
+			return response;
 		}
-		else
-		return null;
+		else {
+			return null;
+		}
 	}
 
 	@Override

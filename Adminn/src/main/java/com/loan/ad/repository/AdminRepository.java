@@ -7,5 +7,7 @@ import com.loan.ad.model.EmployeeDetails;
 
 @Repository
 public interface AdminRepository extends JpaRepository<EmployeeDetails, Integer> {
-//	public EmployeeDetails deleteById( int n);
+
+	public EmployeeDetails findByEmployeeName(String employeeName);
+	
 }

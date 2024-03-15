@@ -49,10 +49,25 @@ public class AdminServiceImpl implements AdminService
 		List<EmployeeDetails> ell = adminrepository.findAll();
 		return ell;
 	}
+	
+	@Override
+    public EmployeeDetails getEmployeeByName(String employeeName) {
+		EmployeeDetails getrecord=adminrepository.findByEmployeeName(employeeName);
+		
+		if(getrecord!=null)
+		{
+			return getrecord;
+		}
+		else
+		{
+			return null;
+		}
+    }
 
 
-//	@Override
-//	public EmployeeDetails deleteemp(int n) {
-//			return adminrepository.deleteById(n);
-//	}
+	@Override
+	public void deleteEmployeeById(int n) {
+		adminrepository.deleteById(n);
+		
+	}
 }

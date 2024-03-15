@@ -29,9 +29,10 @@ public class AdminController
 	   public ResponseEntity<String> addEmployees(@RequestPart ("employees") String employeeDetails,
 			                                      @RequestPart ("profile") MultipartFile profileImg)
 	   {
-		   EmployeeDetails emp = adminservice.saveEmployee( employeeDetails,profileImg);
+		   EmployeeDetails emp = adminservice.saveEmployee(employeeDetails,profileImg);
 		   return new ResponseEntity<String>("Employee Data Added Successfully",HttpStatus.CREATED); 
 	   }
+	   
 	   
 	   @GetMapping("/get_employee_details")
 	   public ResponseEntity<List<EmployeeDetails>> getAllEmployeeDetails()
@@ -41,16 +42,25 @@ public class AdminController
 	   }
 	   
 	   @PutMapping("/edit_employeedetails/{employeeId}")
-		public EmployeeDetails editEmployeeData(@PathVariable("employeeId") int id, @RequestBody EmployeeDetails ed)
+		public ResponseEntity<EmployeeDetails> editEmployeeData(@PathVariable("employeeId") int id, @RequestBody EmployeeDetails ed)
 		{
 			EmployeeDetails empd = adminservice.updateEmployee(ed);
 			
-			return empd;
+			return new ResponseEntity<EmployeeDetails>(empd,HttpStatus.OK);
 		}
-	   
-//	   @DeleteMapping("/deleteemp/{employeeId}")
-//		public  ResponseEntity<String>  delete(@PathVariable("employeeId") int n) {
-//			EmployeeDetails emp = adminservice.deleteemp(n);
-//			return new ResponseEntity<String>("Delete Employee Sucessfully..!!",HttpStatus.OK);
-//		} 
+
+	 //get Single Admin Record By using employeeID
+	   @GetMapping("/getEmployeeByName/{employeeName}")
+	   public ResponseEntity<EmployeeDetails> getEmployeeByName(@PathVariable String employeeName ){
+		   EmployeeDetails response =adminservice.getEmployeeByName(employeeName);
+		   return new ResponseEntity<EmployeeDetails>(response,HttpStatus.OK);
+	   }
+
+
+	   @DeleteMapping("/deleteemp/{employeeId}")
+		public  ResponseEntity<String>  deleteEmployee(@PathVariable("employeeId") int n) {
+			   adminservice.deleteEmployeeById(n);
+			return new ResponseEntity<String>("Delete Employee Sucessfully..!!",HttpStatus.OK);
+		} 
+
 }

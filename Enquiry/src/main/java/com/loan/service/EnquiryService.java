@@ -10,7 +10,7 @@ public interface EnquiryService {
 
 	public List<CustomerEnquiryDetails> getEnquiryDetailsss();
 
-	public CustomerEnquiryDetails getEnquiryById(int customerEnquiryId);
+	public CustomerEnquiryDetails getEnquiryByName(String customerFirstName);
 
 	public void saveCibil(CustomerEnquiryDetails customerEnquiryDetails);
 
