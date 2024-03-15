@@ -1,12 +1,16 @@
 package com.loan.app.controller;
 
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -39,12 +43,7 @@ public class LoanAppController
 		   List<CustomerDetails> emp = loanappservice.getCustomerData();
 		   return new ResponseEntity<List<CustomerDetails>>(emp,HttpStatus.OK);
 	   }
-	 @GetMapping("/getcibilscore")
-	   public ResponseEntity<Integer> cibilcheck()
-	   {
-		int checkcibilcheck=loanappservice.checkcibil();
-		return new ResponseEntity<Integer>(checkcibilcheck,HttpStatus.OK);
-	   }
+	 
 	 
 	 
 }

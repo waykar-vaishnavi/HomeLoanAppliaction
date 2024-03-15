@@ -1,6 +1,7 @@
 package com.loan.controller;
 
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,9 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.loan.model.CustomerEnquiryDetails;
 import com.loan.service.EnquiryService;
 
@@ -41,8 +42,22 @@ public class EnquiryController {
 		CustomerEnquiryDetails response = enquiryservice.getEnquiryById(customerEnquiryId);
 		return new ResponseEntity<CustomerEnquiryDetails>(response,HttpStatus.FOUND);
 	}
-	     
+	@PutMapping("/updatecibilscore/{customerEnquiryId}")
+	   public ResponseEntity<CustomerEnquiryDetails> cibilcheck(@PathVariable ("customerEnquiryId") int customerEnquiryId,@RequestBody CustomerEnquiryDetails customerEnquiryDetails)
+	   {
+		 int  min=550,max=950;
+			int cibil=ThreadLocalRandom.current().nextInt(min,max+1);
+			customerEnquiryDetails.getCibil().setCscore(cibil);
+			if(cibil>=650 && cibil<=900)
+			{
+				customerEnquiryDetails.getCibil().setCstatus("Approved");
+			}
+			else
+			{
+				customerEnquiryDetails.getCibil().setCstatus("Rejected");
+			}
 	
-	
-	
+			enquiryservice.saveCibil(customerEnquiryDetails);
+		return new ResponseEntity<CustomerEnquiryDetails>(customerEnquiryDetails,HttpStatus.OK);
+	   }
 }

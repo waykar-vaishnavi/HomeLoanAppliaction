@@ -1,7 +1,7 @@
 package com.loan.app.serviceImpl;
 
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,14 +47,5 @@ public class LoanAppServiceImpl implements LoanAppService
 		List<CustomerDetails> cd = loanapprepository.findAll();
 		return cd;
 	}
-
-	@Override
-	public int checkcibil() {
-		int  min=550,max=950;
-		int cibil=ThreadLocalRandom.current().nextInt(min,max+1);
-		return cibil;
-	}
-	
-	
 
 }

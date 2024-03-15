@@ -12,6 +12,10 @@ public interface LoanAppService {
 			                            MultipartFile adharcard, MultipartFile pphoto, MultipartFile ssign, MultipartFile bankpassbook);
 
 	public List<CustomerDetails> getCustomerData();
+
 	
-	public int checkcibil();
+	
+	
+
+	
 }

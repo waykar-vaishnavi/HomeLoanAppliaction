@@ -39,6 +39,12 @@ public class EnquiryServiceImpl implements EnquiryService{
 		return null;
 	}
 
+	@Override
+	public void saveCibil(CustomerEnquiryDetails customerEnquiryDetails) {
+		enquiryrepo.save(customerEnquiryDetails);
+		
+	}
+
 	
 
 }

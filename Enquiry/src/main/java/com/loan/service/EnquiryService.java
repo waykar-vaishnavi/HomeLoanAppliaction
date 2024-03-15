@@ -12,4 +12,6 @@ public interface EnquiryService {
 
 	public CustomerEnquiryDetails getEnquiryById(int customerEnquiryId);
 
+	public void saveCibil(CustomerEnquiryDetails customerEnquiryDetails);
+
 }
