@@ -69,7 +69,7 @@ public class LoanAppServiceImpl implements LoanAppService
 
 	@Override
 	public CustomerDetails getByIdCustomer(int cid) {
-		CustomerDetails ccd = loanapprepository.findAllById(cid);
+		CustomerDetails ccd = loanapprepository.findByCustomerApplicationId(cid);
 		return ccd;
 	}
 
