@@ -20,7 +20,9 @@ public class EmployeeDetails
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int employeeId;
 	private String employeeName;
+	@Column(unique = true)
 	private String employeeEmail;
+//	@Column(unique = true)
 	private long employeeContactNo;
 	private String emplyeeDesignation;
 	@Lob

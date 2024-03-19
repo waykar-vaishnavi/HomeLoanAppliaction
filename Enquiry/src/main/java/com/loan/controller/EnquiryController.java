@@ -24,10 +24,10 @@ public class EnquiryController {
 	EnquiryService enquiryservice;
 	
 	@PostMapping("/Add_customer_Enquiry")
-	public ResponseEntity<String> addCustomerenquiry(@RequestBody CustomerEnquiryDetails ced)
+	public ResponseEntity<CustomerEnquiryDetails> addCustomerenquiry(@RequestBody CustomerEnquiryDetails ced)
 	{
-		CustomerEnquiryDetails cceedd = enquiryservice.saveEnquiryDetails(ced);
-		return new ResponseEntity<String>("Customer Enquiry Added Successfully",HttpStatus.CREATED); 
+		 ced = enquiryservice.saveEnquiryDetails(ced);
+		return new ResponseEntity<CustomerEnquiryDetails>(ced,HttpStatus.CREATED); 
 	}
 	
 	@GetMapping("/getEnquiry")

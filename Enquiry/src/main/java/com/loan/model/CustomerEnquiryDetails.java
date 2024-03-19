@@ -3,6 +3,7 @@ package com.loan.model;
 
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,8 +26,10 @@ public class CustomerEnquiryDetails
     private String  customerLastName;
     private String customerPanCard;
     private long customerAadharNumber;
+//    @Column(unique = true)
     private String customerEmailId;
     private String customerPassword;
+    @Column(unique = true)
     private long customerMobileNumber;
     @OneToOne(cascade = CascadeType.ALL)
 	private cibil cibil;
