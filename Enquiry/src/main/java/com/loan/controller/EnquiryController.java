@@ -1,5 +1,6 @@
 package com.loan.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -60,5 +61,40 @@ public class EnquiryController {
 	
 			enquiryservice.saveCibil(customerEnquiryDetails);
 		return new ResponseEntity<CustomerEnquiryDetails>(customerEnquiryDetails,HttpStatus.OK);
+	   }
+	@GetMapping("/getapprovedEnquries")
+	   public List<CustomerEnquiryDetails> getApprovedEnquiry()
+	   {
+		   List<CustomerEnquiryDetails> ced = enquiryservice.getEnquiryDetailsss();
+		   List<CustomerEnquiryDetails> approvedEnquiries = new ArrayList<>(); //dummy list
+
+		   for(CustomerEnquiryDetails cusomerdetailes:ced) {
+			   
+			if(cusomerdetailes.getCibil().getCstatus().equalsIgnoreCase("Approved"))
+	       {
+		     approvedEnquiries.add(cusomerdetailes);
+
+	       }
+		   }
+		   return approvedEnquiries;
+			
+	   }
+	
+	@GetMapping("/getrejectedEnquries")
+	   public List<CustomerEnquiryDetails> getrejectEnquiry()
+	   {
+		   List<CustomerEnquiryDetails> ced = enquiryservice.getEnquiryDetailsss();
+		   List<CustomerEnquiryDetails> approvedRejected = new ArrayList<>(); //dummy list
+
+		   for(CustomerEnquiryDetails cusomerdetailes:ced) {
+			   
+			if(cusomerdetailes.getCibil().getCstatus().equalsIgnoreCase("Rejected"))
+	       {
+				approvedRejected.add(cusomerdetailes);
+
+	       }
+		   }
+		   return approvedRejected;
+			
 	   }
 }
