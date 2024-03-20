@@ -11,6 +11,7 @@ import com.loan.ad.dto.BaseResponse;
 import com.loan.ad.enums.ErrorInfo;
 import com.loan.ad.exception.EmployeeNotFound;
 import com.loan.ad.exception.NotValidEmailIdForEmployee;
+import com.loan.ad.exception.NotValidMobileNumberForEmployee;
 
 @RestControllerAdvice
 public class EmployeeExceptionHandler {
@@ -26,4 +27,10 @@ public class EmployeeExceptionHandler {
 	{
 		return new ResponseEntity<BaseResponse>(new BaseResponse(ErrorInfo.Employee_Is_Not_Available.toString(),new Date()),HttpStatus.NOT_FOUND);
 	}
+	
+//	@ExceptionHandler(NotValidMobileNumberForEmployee.class)
+//	public ResponseEntity<BaseResponse> handleCustomerMobNo()
+//	{
+//		return new ResponseEntity<BaseResponse>(new BaseResponse(ErrorInfo.Mobile_Number_Already_Exists.toString(), new Date()),HttpStatus.NOT_ACCEPTABLE);
+//	}
 }

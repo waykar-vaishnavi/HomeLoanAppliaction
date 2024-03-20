@@ -22,10 +22,18 @@ public class EmployeeDetails
 	private String employeeName;
 	@Column(unique = true)
 	private String employeeEmail;
-//	@Column(unique = true)
+	@Column(unique = true)
 	private long employeeContactNo;
 	private String emplyeeDesignation;
 	@Lob
 	@Column(length=999999999)
 	private byte[] employeeProfileImage;
+//	{
+//		"employeeName":"Adhishri Deshmukh",
+//		"employeeEmail":"s1@gmail.com",
+//		"employeeContactNo":9325396144,
+//		"emplyeeDesignation":"IT",
+//		
+//	}
+	
 }

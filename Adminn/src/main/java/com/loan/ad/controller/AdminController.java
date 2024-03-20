@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.loan.ad.exception.NotValidEmailIdForEmployee;
+import com.loan.ad.exception.NotValidMobileNumberForEmployee;
 import com.loan.ad.model.EmployeeDetails;
 import com.loan.ad.service.AdminService;
 
@@ -31,6 +33,7 @@ public class AdminController
 	   {
 		   EmployeeDetails emp = adminservice.saveEmployee(employeeDetails,profileImg);
 		   return new ResponseEntity<String>("Employee Data Added Successfully",HttpStatus.CREATED); 
+
 	   }
 	   
 	   

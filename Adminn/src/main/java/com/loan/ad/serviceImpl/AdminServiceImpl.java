@@ -30,7 +30,8 @@ public class AdminServiceImpl implements AdminService {
 		} catch (Exception e) {
 
 			throw new NotValidEmailIdForEmployee();
-		}
+//			e.printStackTrace();
+		} 
 //		catch (Exception e) {
 //
 //			throw new NotValidMobileNumberForEmployee();
@@ -58,14 +59,14 @@ public class AdminServiceImpl implements AdminService {
 		if (oe.isPresent()) {
 			return oe.get();
 		} else {
-			throw new EmployeeNotFound(employeeName+" Employee is not available");
+			throw new EmployeeNotFound(employeeName + " Employee is not available");
 		}
 	}
 
 	@Override
 	public void deleteEmployeeById(int n) {
-		adminrepository.deleteById(n);
 
+		adminrepository.deleteById(n);
 	}
 
 //	@Override

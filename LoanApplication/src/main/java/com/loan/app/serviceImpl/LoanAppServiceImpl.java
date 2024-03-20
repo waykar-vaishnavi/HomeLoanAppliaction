@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.loan.app.exception.CustomerNotFound;
+import com.loan.app.exception.NotValidMobileNo;
 import com.loan.app.model.CustomerDetails;
 import com.loan.app.repository.LoanAppRepository;
 import com.loan.app.service.LoanAppService;
@@ -38,7 +39,8 @@ public class LoanAppServiceImpl implements LoanAppService
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			throw new NotValidMobileNo();
+//			e.printStackTrace();
 		}
 		return null;
 	}

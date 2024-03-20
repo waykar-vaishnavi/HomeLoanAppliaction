@@ -6,4 +6,8 @@ public class EmployeeNotFound extends RuntimeException{
 	{
 		super(message);
 	}
+
+	public EmployeeNotFound() {
+		
+	}
 }
