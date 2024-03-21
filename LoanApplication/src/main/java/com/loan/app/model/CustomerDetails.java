@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,7 +32,6 @@ public class CustomerDetails
 	private String customerPassword;
 	private String customerGender;
 	private String customerQualification;
-	private int customerCibilScore;
 	private String customerLoanStatus;
 	private double customerLoanAmountRequired;
 	@OneToOne(cascade = CascadeType.ALL)
@@ -42,6 +42,10 @@ public class CustomerDetails
 	private CustomerBankDetails customerBankDetails;
 	@OneToOne(cascade = CascadeType.ALL)
 	private CustomerAllDocuments customerAllDocuments;
+	@OneToOne(cascade = CascadeType.ALL)
+	private Ledger customerLedger;
+	@OneToOne(cascade = CascadeType.ALL)
+	private Sanction sanction;
 	
 	
 }
