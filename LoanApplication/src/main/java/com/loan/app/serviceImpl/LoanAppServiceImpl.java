@@ -1,13 +1,14 @@
 package com.loan.app.serviceImpl;
 
 import java.util.List;
-
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.loan.app.exception.CustomerNotFound;
 import com.loan.app.model.CustomerDetails;
 import com.loan.app.repository.LoanAppRepository;
 import com.loan.app.service.LoanAppService;
@@ -63,8 +64,13 @@ public class LoanAppServiceImpl implements LoanAppService
 
 	@Override
 	public CustomerDetails getByIdCustomer(int cid) {
-		CustomerDetails ccd = loanapprepository.findByCustomerApplicationId(cid);
-		return ccd;
+		Optional<CustomerDetails> oc = loanapprepository.findByCustomerApplicationId(cid);
+		if(oc.isPresent())
+		{
+			return oc.get();
+		}else {
+			throw new CustomerNotFound(cid+"Customer is not available");
+		}
 	}
 
 }
