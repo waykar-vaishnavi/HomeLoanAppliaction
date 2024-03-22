@@ -44,9 +44,6 @@ public class LoanAppController
 		   List<CustomerDetails> emp = loanappservice.getCustomerData();
 		   return new ResponseEntity<List<CustomerDetails>>(emp,HttpStatus.OK);
 	   }
-
-
-	 
 	 @PutMapping("/edit_customer/{customerApplicationId}")
 	 public ResponseEntity<CustomerDetails> editCustomerData(@PathVariable("customerApplicationId") int cid, @RequestBody CustomerDetails cd)
 	 {
