@@ -31,8 +31,7 @@ public class LoanDisbursementController {
 		Optional<CustomerDetails> customer=loandisburseservice.findById(customerApplicationId);
 		CustomerDetails details = customer.get();
 		if(customer.isEmpty()) {
-			throw new CustomerNotFound("If Id isn't present then it will throw an Exception");
-			
+			throw new CustomerNotFound("If Id isn't present then it will throw an Exception");	
 		}
 		else {
 			details.setCustomerLoanStatus(String.valueOf(CustomerLoanStatus.LoanDisbursed));
@@ -42,8 +41,7 @@ public class LoanDisbursementController {
 			details.getCustomerloandisbursement().setPaymentStatus(loandisbursement.getPaymentStatus());
 			details.getCustomerloandisbursement().setDealerBankAccountNumber(loandisbursement.getDealerBankAccountNumber());
 			details.getCustomerloandisbursement().setDealerBankIfscNumber(loandisbursement.getDealerBankIfscNumber());
-			details.getCustomerloandisbursement().setDealerBankName(loandisbursement.getDealerBankName());
-			
+			details.getCustomerloandisbursement().setDealerBankName(loandisbursement.getDealerBankName());	
 			CustomerDetails responsedata = loandisburseservice.updateloanDisbursement(details);
 			BaseResponse br= new BaseResponse<>(200,"Loan Disbursed successfully !!!!",responsedata);
 			return new ResponseEntity<BaseResponse<CustomerDetails>>(br,HttpStatus.OK);

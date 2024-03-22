@@ -46,6 +46,11 @@ public class CustomerDetails
 	private CustomerAllDocuments customerAllDocuments;
 	@OneToOne(cascade = CascadeType.ALL)
 	private LoanDisbursement customerloandisbursement;
+	@OneToOne(cascade = CascadeType.ALL)
+	private Ledger customerldger; 
+	@OneToOne(cascade = CascadeType.ALL)
+	private Sanction sanction;
+	
 
 	
 }
