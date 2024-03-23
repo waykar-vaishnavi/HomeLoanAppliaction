@@ -1,6 +1,7 @@
 package com.loan.app.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
@@ -98,7 +99,41 @@ public class LoanAppController
 		
 		}
 	  
+	 @GetMapping("/getapprovedDocCustomer") //method to iterate approved Document Customer
+	   public List<CustomerDetails> getApprovedDocumentCustomer()
+	   {
+		   List<CustomerDetails> ced = loanappservice.getCustomerData();
+		   List<CustomerDetails> approveddoc = new ArrayList<>(); //dummy list
 
+		   for(CustomerDetails cusomerdetailes:ced) {
+			   
+			if(cusomerdetailes.getCustomerdocstatus().equalsIgnoreCase("Approved"))
+	       {
+				approveddoc.add(cusomerdetailes);
+
+	       }
+		   }
+		   return approveddoc;
+			
+	   }
+	   
+	   @GetMapping("/getRejectedDocCustomer") //method to iterate rejected Document Customer
+	   public List<CustomerDetails> getRejectedDocumentCustomer()
+	   {
+		   List<CustomerDetails> ced = loanappservice.getCustomerData();
+		   List<CustomerDetails> rejectdoc = new ArrayList<>(); //dummy list
+
+		   for(CustomerDetails cusomerdetailes:ced) {
+			   
+			if(cusomerdetailes.getCustomerdocstatus().equalsIgnoreCase("Rejected"))
+	       {
+				rejectdoc.add(cusomerdetailes);
+
+	       }
+		   }
+		   return rejectdoc;
+			
+	   }
 
 
 }
