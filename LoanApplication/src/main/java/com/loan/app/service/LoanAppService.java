@@ -1,6 +1,7 @@
 package com.loan.app.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -18,6 +19,9 @@ public interface LoanAppService {
 
 	public CustomerDetails updateCustomerById(CustomerDetails cd);
 
-	public CustomerDetails getByIdCustomer(int cid);
+	public Optional<CustomerDetails> getByIdCustomer(int cid);
+
+
+	public CustomerDetails updateCustomer(CustomerDetails customerDetails2);
 
 }

@@ -33,9 +33,9 @@ public class CustomerDetails
 	private String customerPassword;
 	private String customerGender;
 	private String customerQualification;
-//	private int customerCibilScore;
 	private String customerLoanStatus;
 	private double customerLoanAmountRequired;
+	private String customerdocstatus;
 	@OneToOne(cascade = CascadeType.ALL)
 	private CustomerAddress customerAddress;
 	@OneToOne(cascade = CascadeType.ALL)

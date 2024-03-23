@@ -1,6 +1,8 @@
 package com.loan.app.controller;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +46,8 @@ public class LoanAppController
 		   List<CustomerDetails> emp = loanappservice.getCustomerData();
 		   return new ResponseEntity<List<CustomerDetails>>(emp,HttpStatus.OK);
 	   }
-	 @PutMapping("/edit_customer/{customerApplicationId}")
+	 
+	 @PutMapping("/edit_customer/{customerApplicationId}")//simple edit customer
 	 public ResponseEntity<CustomerDetails> editCustomerData(@PathVariable("customerApplicationId") int cid, @RequestBody CustomerDetails cd)
 	 {
 			CustomerDetails cmpd = loanappservice.updateCustomerById(cd);
@@ -55,18 +58,47 @@ public class LoanAppController
 	 @GetMapping("/getsingleCutomer/{customerApplicationId}") //get single customer by id
 	 public ResponseEntity<CustomerDetails> getSingleCustomer(@PathVariable("customerApplicationId") int cid) 
 	 {
-		 CustomerDetails ccd = loanappservice.getByIdCustomer(cid);
-		 return new ResponseEntity<CustomerDetails>(ccd, HttpStatus.OK);
+		 Optional<CustomerDetails> ccd = loanappservice.getByIdCustomer(cid);
+		 CustomerDetails customerDetails=ccd.get();
+		 return new ResponseEntity<CustomerDetails>(customerDetails, HttpStatus.OK);
 	 }
 	 
-	 @DeleteMapping("/delete_customer/{customerApplicationId}")
+	 @DeleteMapping("/delete_customer/{customerApplicationId}")//delete Customer
 	 public ResponseEntity<String> deleteCustomer(@PathVariable("customerApplicationId") int csid)
 	 {
 		 loanappservice.deleteCustomerById(csid);
 		 return new ResponseEntity<String>("Delete customer data successfully",HttpStatus.OK);
 	 }
 
-	
+	 @PutMapping("/updateCustomer/{customerApplicationId}")	//update customer by loan status for document verification
+		public ResponseEntity<CustomerDetails> updateCustomer(@RequestBody String customerDocDetails,
+				                                              @PathVariable("customerApplicationId") Integer cid) throws IOException
+		{
+		    
+			Optional<CustomerDetails> customerdetails = loanappservice.getByIdCustomer(cid);
+			CustomerDetails customerDetails2 = customerdetails.get();
+			System.out.println(customerDocDetails.contains("Approved"));
+			if (customerDocDetails.contains("Approved"))
+			{
+				customerDetails2.setCustomerdocstatus("Approved");
+				loanappservice.updateCustomer(customerDetails2);
+			}
+			
+			else if (customerDocDetails.contains("Rejected"))
+			{
+				customerDetails2.setCustomerdocstatus("Rejected");
+				loanappservice.updateCustomer(customerDetails2);
+			}
+			
+			else
+			{
+				return null;
+			}
+			return new ResponseEntity<CustomerDetails>(customerDetails2, HttpStatus.OK);	
+		
+		}
+	  
+
 
 
 }
