@@ -1,17 +1,22 @@
 package com.loan.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.loan.model.CustomerEnquiryDetails;
 import com.loan.model.Email;
 import com.loan.service.EmailService;
 import com.loan.service.EnquiryService;
 
+@CrossOrigin("*")
+@RestController
 public class EmailController
 {
 	@Autowired
