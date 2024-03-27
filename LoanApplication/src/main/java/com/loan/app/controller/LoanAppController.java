@@ -3,8 +3,8 @@ package com.loan.app.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.ThreadLocalRandom;
+//import java.util.Optional;
+//import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.loan.app.exception.CustomerNotFound;
+
+//import com.loan.app.exception_rest.CustomerExceptionHandler;
 import com.loan.app.model.CustomerDetails;
 import com.loan.app.service.LoanAppService;
 @CrossOrigin("*")
@@ -61,15 +63,26 @@ public class LoanAppController
 	 @GetMapping("/getsingleCutomer/{customerApplicationId}") //get single customer by id
 	 public ResponseEntity<CustomerDetails> getSingleCustomer(@PathVariable("customerApplicationId") int cid) 
 	 {
-		CustomerDetails ccd = loanappservice.getByIdCustomer(cid);
-//		 CustomerDetails customerDetails=ccd.get();
-		if(ccd!=null)
-		{
-		 return new ResponseEntity<CustomerDetails>(ccd, HttpStatus.OK);
-		}
-		else {
-			throw new CustomerNotFound("Customer Not Found");
-		}
+//		CustomerDetails ccd = loanappservice.getByIdCustomer(cid);
+////		 CustomerDetails customerDetails=ccd.get();
+//		if(ccd!=null)
+//		{
+//		 return new ResponseEntity<CustomerDetails>(ccd, HttpStatus.OK);
+//		}
+//		else {
+//			throw new CustomerNotFound("Customer Not Found");
+//		}
+
+		 CustomerDetails ccd = loanappservice.getByIdCustomer(cid);
+		 if(ccd!=null)
+		 {
+			 return new ResponseEntity<CustomerDetails>(ccd, HttpStatus.OK);
+		 }
+		 else
+		 {
+			 throw new CustomerNotFound("Customer Not Found");
+		 }
+
 	 }
 	 
 	 @DeleteMapping("/delete_customer/{customerApplicationId}")//delete Customer
@@ -85,7 +98,9 @@ public class LoanAppController
 		{
 		    
 			CustomerDetails customerdetails = loanappservice.getByIdCustomer(cid);
+
 //			CustomerDetails customerDetails2 = customerdetails.get();
+
 			System.out.println(customerDocDetails.contains("Approved"));
 			if (customerDocDetails.contains("Approved"))
 			{

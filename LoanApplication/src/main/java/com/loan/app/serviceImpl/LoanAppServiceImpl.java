@@ -71,7 +71,10 @@ public class LoanAppServiceImpl implements LoanAppService
 		{
 			CustomerDetails cd = oc.get();
 			return cd;
-		}else {
+
+		}
+		else 
+		{
 			throw new CustomerNotFound(cid+"Customer is not available");
 		}
 	}
