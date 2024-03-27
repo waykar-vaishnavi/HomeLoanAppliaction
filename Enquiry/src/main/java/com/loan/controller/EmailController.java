@@ -28,7 +28,7 @@ public class EmailController
 	private EnquiryService enquiryservise;
 	
 	@Value("${spring.mail.username}")
-	private String fromEmail;
+	private String fromemail;
 	
 	@PostMapping("/sendmail")
 	public ResponseEntity<CustomerEnquiryDetails> sendMail(@RequestBody CustomerEnquiryDetails enq)
@@ -36,7 +36,7 @@ public class EmailController
 		System.out.println("cibil status "+enq.getCibil().getCstatus());
 		if(enq.getCibil().getCstatus().equals("Approved"))
 		{
-		email.setFromEmail(fromEmail);
+		email.setFromEmail(fromemail);
         email.setToEmail(enq.getCustomerEmailId());
 		email.setSubject("Regarding Home Loan For Documentation of Applicant name: "+ enq.getCustomerFirstName() +" "+ enq.getCustomerLastName());
 		email.setText("your cibil is Approved and You are Eligible\n"
@@ -67,7 +67,7 @@ public class EmailController
 		}
 		else if(enq.getCibil().getCstatus().equals("Rejected"))
 		{
-			email.setFromEmail(fromEmail);
+			email.setFromEmail(fromemail);
 	        email.setToEmail(enq.getCustomerEmailId());
 			email.setSubject("Regarding Car Loan For Documentation of Applicant name: "+ enq.getCustomerFirstName() +" "+ enq.getCustomerLastName());
 			email.setText("your cibil is Rejected and You are Not Eligible\n"
