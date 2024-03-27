@@ -28,20 +28,20 @@ public ResponseEntity<CustomerDetails> updateledger(@PathVariable("customerAppli
 	CustomerDetails customerDetails=ledgerbyid.get();
 	if(ledgerbyid.isPresent())
 	{
-		customerDetails.getCustomerLedger().setLedgerId(ledger.getLedgerId());
-		customerDetails.getCustomerLedger().setTotalPrincipalAmount(ledger.getTotalPrincipalAmount());
-		customerDetails.getCustomerLedger().setMonthlyEMI(ledger.getMonthlyEMI());
-		customerDetails.getCustomerLedger().setTenure(ledger.getTenure());
-		customerDetails.getCustomerLedger().setLedgerCreatedDate(ledger.getLedgerCreatedDate());
-		customerDetails.getCustomerLedger().setNextEmiStartDate(ledger.getNextEmiStartDate());
-		customerDetails.getCustomerLedger().setNextEmiEndDate(ledger.getNextEmiEndDate());
-		customerDetails.getCustomerLedger().setPreviousEmiStatus(ledger.getPreviousEmiStatus());
-		customerDetails.getCustomerLedger().setCurrentMonthEmiStatus(ledger.getCurrentMonthEmiStatus());
-		customerDetails.getCustomerLedger().setLoanStatus(ledger.getLoanStatus());
-		customerDetails.getCustomerLedger().setRemainingAmount(ledger.getRemainingAmount());
-		customerDetails.getCustomerLedger().setAmountPaidtillDate(ledger.getAmountPaidtillDate());
-		customerDetails.getCustomerLedger().setPayableAmountwithInterest(ledger.getPayableAmountwithInterest());
-		customerDetails.getCustomerLedger().setLoanEndDate(ledger.getLoanEndDate());	
+		customerDetails.getCustomerldger().setLedgerId(ledger.getLedgerId());
+		customerDetails.getCustomerldger().setTotalPrincipalAmount(ledger.getTotalPrincipalAmount());
+		customerDetails.getCustomerldger().setMonthlyEMI(ledger.getMonthlyEMI());
+		customerDetails.getCustomerldger().setTenure(ledger.getTenure());
+		customerDetails.getCustomerldger().setLedgerCreatedDate(ledger.getLedgerCreatedDate());
+		customerDetails.getCustomerldger().setNextEmiStartDate(ledger.getNextEmiStartDate());
+		customerDetails.getCustomerldger().setNextEmiEndDate(ledger.getNextEmiEndDate());
+		customerDetails.getCustomerldger().setPreviousEmiStatus(ledger.getPreviousEmiStatus());
+		customerDetails.getCustomerldger().setCurrentMonthEmiStatus(ledger.getCurrentMonthEmiStatus());
+		customerDetails.getCustomerldger().setLoanStatus(ledger.getLoanStatus());
+		customerDetails.getCustomerldger().setRemainingAmount(ledger.getRemainingAmount());
+		customerDetails.getCustomerldger().setAmountPaidtillDate(ledger.getAmountPaidtillDate());
+		customerDetails.getCustomerldger().setPayableAmountwithInterest(ledger.getPayableAmountwithInterest());
+		customerDetails.getCustomerldger().setLoanEndDate(ledger.getLoanEndDate());	
 	}
 	CustomerDetails savelegder=ls.savecustomerledger(customerDetails);
 	return new ResponseEntity<CustomerDetails>(savelegder,HttpStatus.OK);	
