@@ -19,7 +19,7 @@ public interface LoanAppService {
 
 	public CustomerDetails updateCustomerById(CustomerDetails cd);
 
-	public Optional<CustomerDetails> getByIdCustomer(int cid);
+	public CustomerDetails getByIdCustomer(int cid);
 
 
 	public CustomerDetails updateCustomer(CustomerDetails customerDetails2);

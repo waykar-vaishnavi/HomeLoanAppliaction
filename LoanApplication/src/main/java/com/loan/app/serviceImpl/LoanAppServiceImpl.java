@@ -65,12 +65,15 @@ public class LoanAppServiceImpl implements LoanAppService
 
 
 	@Override
-	public Optional<CustomerDetails> getByIdCustomer(int cid) {
+	public CustomerDetails getByIdCustomer(int cid) {
 		Optional<CustomerDetails> oc = loanapprepository.findByCustomerApplicationId(cid);
 		if(oc.isPresent())
 		{
-			return oc.get();
-		}else {
+			CustomerDetails cd = oc.get();
+			return cd;
+		}
+		else 
+		{
 			throw new CustomerNotFound(cid+"Customer is not available");
 		}
 	}

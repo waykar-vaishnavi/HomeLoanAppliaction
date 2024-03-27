@@ -19,6 +19,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.loan.app.exception.CustomerNotFound;
+import com.loan.app.exception_rest.CustomerExceptionHandler;
 import com.loan.app.model.CustomerDetails;
 import com.loan.app.service.LoanAppService;
 @CrossOrigin("*")
@@ -59,9 +62,15 @@ public class LoanAppController
 	 @GetMapping("/getsingleCutomer/{customerApplicationId}") //get single customer by id
 	 public ResponseEntity<CustomerDetails> getSingleCustomer(@PathVariable("customerApplicationId") int cid) 
 	 {
-		 Optional<CustomerDetails> ccd = loanappservice.getByIdCustomer(cid);
-		 CustomerDetails customerDetails=ccd.get();
-		 return new ResponseEntity<CustomerDetails>(customerDetails, HttpStatus.OK);
+		 CustomerDetails ccd = loanappservice.getByIdCustomer(cid);
+		 if(ccd!=null)
+		 {
+			 return new ResponseEntity<CustomerDetails>(ccd, HttpStatus.OK);
+		 }
+		 else
+		 {
+			 throw new CustomerNotFound("Customer Not Found");
+		 }
 	 }
 	 
 	 @DeleteMapping("/delete_customer/{customerApplicationId}")//delete Customer
@@ -76,26 +85,25 @@ public class LoanAppController
 				                                              @PathVariable("customerApplicationId") Integer cid) throws IOException
 		{
 		    
-			Optional<CustomerDetails> customerdetails = loanappservice.getByIdCustomer(cid);
-			CustomerDetails customerDetails2 = customerdetails.get();
+			CustomerDetails customerdetails = loanappservice.getByIdCustomer(cid);
 			System.out.println(customerDocDetails.contains("Approved"));
 			if (customerDocDetails.contains("Approved"))
 			{
-				customerDetails2.setCustomerdocstatus("Approved");
-				loanappservice.updateCustomer(customerDetails2);
+				customerdetails.setCustomerdocstatus("Approved");
+				loanappservice.updateCustomer(customerdetails);
 			}
 			
 			else if (customerDocDetails.contains("Rejected"))
 			{
-				customerDetails2.setCustomerdocstatus("Rejected");
-				loanappservice.updateCustomer(customerDetails2);
+				customerdetails.setCustomerdocstatus("Rejected");
+				loanappservice.updateCustomer(customerdetails);
 			}
 			
 			else
 			{
 				return null;
 			}
-			return new ResponseEntity<CustomerDetails>(customerDetails2, HttpStatus.OK);	
+			return new ResponseEntity<CustomerDetails>(customerdetails, HttpStatus.OK);	
 		
 		}
 	  
