@@ -1,8 +1,13 @@
 package com.loan.app.controller;
+import java.io.ByteArrayInputStream;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,5 +39,13 @@ public class LoanSacController {
 		}
 		CustomerDetails cust=ls.savesactiondata(customerDetails);
 		return new ResponseEntity<CustomerDetails>(cust,HttpStatus.OK);	  
-}}
-
+	 }
+	@GetMapping("/applicationPDF/{customerApplicationId}")
+	public ResponseEntity<InputStreamResource> generationApplicationpdf(@PathVariable int customerApplicationId)
+	{
+		ByteArrayInputStream byteArrayInputStream=ls.generateapplicationpdf(customerApplicationId);
+		 HttpHeaders httpHeaders=new  HttpHeaders();
+		 httpHeaders.set("content-disposition","inline;filename=HomeLoan.pdf");
+		 return ResponseEntity.ok().headers(httpHeaders).contentType(MediaType.APPLICATION_PDF).body(new InputStreamResource(byteArrayInputStream));
+}
+}

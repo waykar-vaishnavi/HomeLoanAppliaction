@@ -1,5 +1,6 @@
 package com.loan.app.service;
 
+import java.io.ByteArrayInputStream;
 
 import java.util.Optional;
 
@@ -10,6 +11,8 @@ public interface LoanSacService {
 
 	Optional<CustomerDetails> findById(int cusid);
 
-	CustomerDetails savesactiondata(CustomerDetails customerDetails);
+	 public CustomerDetails savesactiondata(CustomerDetails customerDetails);
 
+	ByteArrayInputStream generateapplicationpdf(int customerApplicationId);
+	
 }
