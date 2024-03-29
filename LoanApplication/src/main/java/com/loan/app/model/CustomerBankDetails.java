@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 public class CustomerBankDetails
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int customerBankDetailsId;
 	private long customerBankAccountNumber;
 	private String customerBankName;

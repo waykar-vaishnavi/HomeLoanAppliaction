@@ -39,7 +39,8 @@ public class LoanAppServiceImpl implements LoanAppService
 		}
 		catch(Exception e)
 		{
-			throw new NotValidMobileNo();
+		//	throw new NotValidMobileNo();
+		e.printStackTrace();
 //			e.printStackTrace();
 		}
 		return null;

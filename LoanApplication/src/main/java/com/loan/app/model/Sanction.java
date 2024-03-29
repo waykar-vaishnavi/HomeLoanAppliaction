@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class Sanction {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int sanctionId;
 	private String sanctionDate;
 	private double loanAmountSanctioned;

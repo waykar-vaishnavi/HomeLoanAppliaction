@@ -16,7 +16,7 @@ public class CustomerProfession
 {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int professionId;
 	private String professionType;
 	private double professionMonthlyIncome;

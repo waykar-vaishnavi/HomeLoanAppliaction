@@ -26,7 +26,7 @@ public class CustomerDetails
 	@Column(unique = true)
 	private long customerMobileNumber;
 	private long customerAdditionalMobileNumber;
-	private String customerPanCard;
+	private String customerPanCardNumber;
 	private long customerAadharCard;
 	private String customerDateOfBirth;
 	private String customerEmail;

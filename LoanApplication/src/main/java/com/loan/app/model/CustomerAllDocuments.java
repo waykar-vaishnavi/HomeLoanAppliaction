@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 public class CustomerAllDocuments
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int documentId;
 	@Lob
 	@Column(length=999999999)
