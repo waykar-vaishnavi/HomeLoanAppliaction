@@ -17,6 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.loan.model.CustomerEnquiryDetails;
 import com.loan.service.EnquiryService;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @RestController
 @CrossOrigin("*")
 public class EnquiryController {

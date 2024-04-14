@@ -32,5 +32,7 @@ public class CustomerEnquiryDetails
     @Column(unique = true)
     private long customerMobileNumber;
     @OneToOne(cascade = CascadeType.ALL)
-	private cibil cibil;
+	private Cibil cibil;
+    
+
 }
