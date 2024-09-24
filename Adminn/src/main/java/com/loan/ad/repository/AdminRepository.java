@@ -10,6 +10,6 @@ import com.loan.ad.model.EmployeeDetails;
 @Repository
 public interface AdminRepository extends JpaRepository<EmployeeDetails, Integer> {
 
-	Optional<EmployeeDetails> findByEmployeeName(String employeeName);
+//	Optional<EmployeeDetails> findByEmployeeName(String employeeName);
 	
 }

@@ -53,13 +53,13 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public EmployeeDetails getEmployeeByName(String employeeName) {
-		Optional<EmployeeDetails> oe = adminrepository.findByEmployeeName(employeeName);
+	public EmployeeDetails getEmployeeById(int employeeId) {
+		Optional<EmployeeDetails> oe = adminrepository.findById(employeeId);
 
 		if (oe.isPresent()) {
 			return oe.get();
 		} else {
-			throw new EmployeeNotFound(employeeName + " Employee is not available");
+			throw new EmployeeNotFound(employeeId + " Employee is not available");
 		}
 	}
 
